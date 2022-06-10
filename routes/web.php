@@ -5,6 +5,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\MapelController;
 use App\Http\Controllers\TampilanController;
 
 /*
@@ -86,3 +87,16 @@ Route::get('/deleteagenda/{id}', [AgendaController::class, 'delete']);
 //? tampilanguru
 
 Route::post('/insertdataview', [TampilanController::class, 'store']);
+
+// ? mapel
+Route::get('/datamapel', [MapelController::class, 'index']);
+
+Route::get('/tambahmapel', [MapelController::class, 'create']);
+
+Route::post('/insertmapel', [MapelController::class, 'store']);
+
+Route::get('/tampilanmapel/{id}', [MapelController::class, 'tampilan']);
+
+Route::put('/updatemapel/{id}', [MapelController::class, 'update']);
+
+Route::get('/deletemapel/{id}', [MapelController::class, 'delete']);

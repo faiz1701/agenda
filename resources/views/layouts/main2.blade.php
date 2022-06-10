@@ -64,6 +64,7 @@
                     <a href="/dataguru" class="nav-item nav-link"><i class="las la-user-tie"></i> Data Guru</a>
                     <a href="/datakelas" class="nav-item nav-link"><i class="las la-school"></i> Data Kelas</a>
                     <a href="/dataagenda" class="nav-item nav-link"><i class="las la-list"></i> Data Agenda</a>
+                    <a href="/datamapel" class="nav-item nav-link"><i class="las la-list"></i> Data Mapel</a>
                 </div>
             </nav>
         </div>
