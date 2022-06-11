@@ -1,6 +1,6 @@
 @extends('layouts.main2')
 
-@section('content')    
+@section('content')
 <!-- Sale & Revenue Start -->
 <div class="container">
     <div class="row mt-4 mb-4">
@@ -11,38 +11,43 @@
                     @csrf
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Nama Guru</label>
-                        <input type="text" class="form-control" name="namaguru" id="exampleInputEmail1"
-                            aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Mapel</label>
-                        <input type="text" class="form-control" name="mapel" id="exampleInputPassword1">
-                        
+                        <select class="form-select" name="user_id">
+                            <option selected value="">Nama Guru</option>
+                            @foreach ( $datauser as $data )
+                            @if ($data->level == 'guru')    
+                            <option value="{{ $data->id }}">{{ $data->name }} ({{$data->mapel}})</option>
+                            @endif
+                            @endforeach
+                        </select>
+                        {{-- <input type="text" class="form-control" name="namaguru" id="exampleInputEmail1"
+                            aria-describedby="emailHelp"> --}}
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Materi Pembelajaran</label>
-                        <input type="text" class="form-control" name="materipelajaran"
-                            id="exampleInputPassword1">
+                        <input type="text" class="form-control" name="materipelajaran" id="exampleInputPassword1">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Mulai Pembelajaran</label>
-                        <input type="text" class="form-control" name="mulaipembelajaran"
-                            id="exampleInputPassword1">
+                        <input type="text" class="form-control" name="mulaipembelajaran" id="exampleInputPassword1">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Akhir Pembelajaran</label>
-                        <input type="text" class="form-control" name="akhirpembelajaran"
-                            id="exampleInputPassword1">
+                        <input type="text" class="form-control" name="akhirpembelajaran" id="exampleInputPassword1">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Siswa Tidak Hadir</label>
-                        <input type="text" class="form-control" name="siswatidakhadir"
-                            id="exampleInputPassword1">
+                        <input type="text" class="form-control" name="siswatidakhadir" id="exampleInputPassword1">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Nama Kelas</label>
-                        <input type="text" class="form-control" name="namakelas" id="exampleInputPassword1">
-                        
+                        <select class="form-select" name="kelas_id">
+                            <option selected>Nama Kelas</option>
+                            @foreach ($datakelas as $data)
+                            <option value="{{ $data->id }}">{{ $data->nama }}</option>
+                            @endforeach
+                        </select>
+                        {{-- <input type="text" class="form-control" name="namakelas" id="exampleInputPassword1"> --}}
+
                     </div>
                     <label for="exampleInputPassword1" class="form-label">Jenis Pembelajaran</label>
                     <select class="form-select form-select mb-3" name="jenispembelajaran"
@@ -53,21 +58,18 @@
                     </select>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Link Pembelajaran</label>
-                        <input type="text" class="form-control" name="linkpembelajaran"
-                            id="exampleInputPassword1">
-                            
+                        <input type="text" class="form-control" name="linkpembelajaran" id="exampleInputPassword1">
+
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Dokumentasi</label>
-                        <input type="file" class="form-control" name="dokumentasi"
-                            id="exampleInputPassword1">
-                            
+                        <input type="file" class="form-control" name="dokumentasi" id="exampleInputPassword1">
+
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Keterangan</label>
-                        <input type="text" class="form-control" name="keterangan"
-                            id="exampleInputPassword1">
-                            
+                        <input type="text" class="form-control" name="keterangan" id="exampleInputPassword1">
+
                     </div>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>

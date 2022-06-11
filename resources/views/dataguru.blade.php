@@ -16,9 +16,8 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Password</th>
                         <th scope="col">Nama Guru</th>
+                        <th scope="col">Username</th>
                         <th scope="col">NIK Guru</th>
                         <th scope="col">Mapel</th>
                         <th scope="col">Aksi</th>
@@ -28,19 +27,24 @@
                     @php
                         $no = 1;
                     @endphp
-                    @foreach ($data as $row)    
+                    @foreach($data as $index => $row)
+                    @if ($row->level != 'admin')    
                     <tr>
                         <th scope="row">{{ $no++ }}</th>
-                        <td>{{$row->username}}</td>
-                        <td>{{$row->password}}</td>
-                        <td>{{$row->namaguru}}</td>
-                        <td>{{$row->nikguru}}</td>
+                        <td>{{ $row->name }}</td>
+                        <td>{{$row->email}}</td>
+                        <td>{{ $row->nik }}</td>
                         <td>{{$row->mapel}}</td>
-                        <td>
+                        <td class="d-flex gap-1">
                             <a href="/tampilanguru/{{ $row->id }}" type="button"  class="btn btn-warning"><i class="las la-edit"></i></a>
-                            <a href="/deleteguru/{{ $row->id }}" type="button" class="btn btn-danger"><i class="las la-trash"></i></a>
+                            <form action="/deleteguru/{{ $row->id }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger d-"><i class="las la-trash"></i></button>
+                            </form>
                         </td>
                     </tr>
+                    @endif 
                     @endforeach
                 </tbody>
             </table>

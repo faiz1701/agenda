@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('kelas', function (Blueprint $table) {
             $table->id();
-            $table->string('namakelas');
-            $table->string('walikelas');
+            $table->string('nama');
+            $table->foreignId('user_id'); // ngambil data guru
             $table->timestamps();
         });
     }

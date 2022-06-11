@@ -33,6 +33,11 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     });
+
+    Route::get('/dataguru', [GuruController::class, 'index']);
+    Route::get('/tambahguru',   [GuruController::class, 'create']);
+    Route::post('/create-guru', [LoginController::class, 'createguru']);
+    Route::delete('/deleteguru/{id}', [GuruController::class, 'delete']);
 });   //? jika ingin ke dashboard harus login terlebih dahulu
 
 Route::get('/viewguru', [TampilanController::class, 'index'])->name('viewguru');
@@ -46,17 +51,12 @@ Route::post('/simpanregistrasi', [LoginController::class, 'simpanregistrasi'])->
 
 
 //? table guru
-Route::get('/dataguru', [GuruController::class, 'index']);
-
-Route::get('/tambahguru', [GuruController::class, 'create']);
-
 Route::post('/insertguru', [GuruController::class, 'store']);
 
 Route::get('/tampilanguru/{id}', [GuruController::class, 'tampilan']);
 
 Route::put('/updateguru/{id}', [GuruController::class, 'update']);
 
-Route::get('/deleteguru/{id}', [GuruController::class, 'delete']);
 
 //? table kelas
 Route::get('/datakelas', [KelasController::class, 'index']);
@@ -87,16 +87,3 @@ Route::get('/deleteagenda/{id}', [AgendaController::class, 'delete']);
 //? tampilanguru
 
 Route::post('/insertdataview', [TampilanController::class, 'store']);
-
-// ? mapel
-Route::get('/datamapel', [MapelController::class, 'index']);
-
-Route::get('/tambahmapel', [MapelController::class, 'create']);
-
-Route::post('/insertmapel', [MapelController::class, 'store']);
-
-Route::get('/tampilanmapel/{id}', [MapelController::class, 'tampilan']);
-
-Route::put('/updatemapel/{id}', [MapelController::class, 'update']);
-
-Route::get('/deletemapel/{id}', [MapelController::class, 'delete']);

@@ -19,8 +19,8 @@ class UserSeeder extends Seeder
         DB::table('users')->insert(
             [
                 'name' => 'Abrar',
-                'level' => 'user',
-                'email' => 'guru@gmail.com',
+                'level' => 'admin',
+                'email' => 'admin@gmail.com',
                 'password' => bcrypt('54321'),
                 'remember_token' => Str::random(60),
             ]

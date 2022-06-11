@@ -12,11 +12,23 @@
                     @method('put')
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Nama Kelas</label>
-                        <input type="text" class="form-control" name="namakelas" id="exampleInputEmail1" value="{{$kelas->namakelas}}" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" name="nama" id="exampleInputEmail1" value="{{$kelas->nama}}" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Wali Kelas</label>
-                        <input type="text" class="form-control"  value="{{$kelas->walikelas}}" name="walikelas" id="exampleInputPassword1">
+                        <select class="form-select" name="user_id">
+                            <option selected>Wali Kelas</option>
+                            @foreach ($datauser as $data)
+                            @if ($data->level == 'guru')   
+                            @if ($data->id == $kelas->user_id)
+                            <option value="{{$data->id}}" selected>{{ $data->name }}</option>
+                            @else
+                            <option value="{{$data->id}}">{{ $data->name }}</option>
+                                
+                            @endif
+                            @endif
+                            @endforeach
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>

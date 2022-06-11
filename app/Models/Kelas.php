@@ -8,5 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Kelas extends Model
 {
     use HasFactory;
-    protected $fillable = ['namakelas', 'walikelas'];
+    protected $guarded = ['id'];
+    // protected $fillable = ['namakelas', 'guru_id'];
+
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class);
+    }
 }

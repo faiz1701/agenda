@@ -8,9 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Agenda extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'namaguru', 'mapel', 'materipelajaran',
-        'mulaipembelajaran', 'akhirpembelajaran', 'siswatidakhadir',
-        'namakelas', 'jenispembelajaran', 'linkpembelajaran', 'dokumentasi', 'keterangan'
-    ];
+    protected $guarded = ['id'];
+    // protected $fillable = [
+    //     'guru_id', 'mapel_id', 'materipelajaran',
+    //     'mulaipembelajaran', 'akhirpembelajaran', 'siswatidakhadir',
+    //     'kelas_id', 'jenispembelajaran', 'linkpembelajaran', 'dokumentasi', 'keterangan'
+    // ];
+
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class);
+    }
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
 }

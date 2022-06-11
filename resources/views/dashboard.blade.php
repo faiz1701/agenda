@@ -34,16 +34,6 @@
                 </div>
             </a>
         </div>
-        <div class="col-sm-6 col-xl-3">
-            <a href="/mapel">
-                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                    <i class="las la-list la-3x text-primary"></i>
-                    <div class="ms-3">
-                        <h6 class="mb-0">Data Mapel</h6>
-                    </div>
-                </div>
-            </a>
-        </div>
     </div>
 </div>
 <!-- Sale & Revenue End -->

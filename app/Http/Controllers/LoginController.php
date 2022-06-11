@@ -41,11 +41,24 @@ class LoginController extends Controller
         // dd($request->all());
         User::create([
             'name' => $request->name,
-            'level' => 'guru',
+            'level' => $request->level,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'remember_token' => Str::random(60)
         ]);
         return redirect('login');
+    }
+
+    public function createguru(Request $request)
+    {
+        User::create([
+            'name' => $request->name,
+            'nik' => $request->nik,
+            'mapel' => $request->mapel,
+            'level' => 'guru',
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+        return redirect('/dataguru');
     }
 }

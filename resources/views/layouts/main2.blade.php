@@ -60,11 +60,10 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="/dashboard" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="/dataguru" class="nav-item nav-link"><i class="las la-user-tie"></i> Data Guru</a>
-                    <a href="/datakelas" class="nav-item nav-link"><i class="las la-school"></i> Data Kelas</a>
-                    <a href="/dataagenda" class="nav-item nav-link"><i class="las la-list"></i> Data Agenda</a>
-                    <a href="/datamapel" class="nav-item nav-link"><i class="las la-list"></i> Data Mapel</a>
+                    <a href="/dashboard" class="nav-item nav-link {{ Request::is('dashboard*') ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="/dataguru" class="nav-item nav-link {{ Request::is('dataguru*') ? 'active' : '' }}"><i class="las la-user-tie"></i> Data Guru</a>
+                    <a href="/datakelas" class="nav-item nav-link {{ Request::is('datakelas*') ? 'active' : '' }}"><i class="las la-school"></i> Data Kelas</a>
+                    <a href="/dataagenda" class="nav-item nav-link {{ Request::is('dataagenda*') ? 'active' : '' }}"><i class="las la-list"></i> Data Agenda</a>
                 </div>
             </nav>
         </div>

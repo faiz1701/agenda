@@ -16,7 +16,7 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nama Guru</th>
+                        <th scope="col">Nama kelas</th>
                         <th scope="col">Wali Kelas</th>
                         <th scope="col">Aksi</th>
                     </tr>
@@ -25,14 +25,14 @@
                     @php
                         $no = 1;
                     @endphp
-                    @foreach ($kelas as $row)    
+                    @foreach ($datakelas as $row)    
                     <tr>
                         <th scope="row">{{ $no++ }}</th>
-                        <td>{{$row->namakelas}}</td>
-                        <td>{{$row->walikelas}}</td>
+                        <td>{{$row->nama}}</td>
+                        <td>{{$row->name}}</td>
                         <td>
-                            <a href="/tampilankelas/{{ $row->id }}" type="button"  class="btn btn-warning"><i class="las la-edit"></i></a>
-                            <a href="/deletekelas/{{ $row->id }}" type="button" class="btn btn-danger"><i class="las la-trash"></i></a>
+                            <a href="/tampilankelas/{{ $row->id_kelas }}" type="button"  class="btn btn-warning"><i class="las la-edit"></i></a>
+                            <a href="/deletekelas/{{ $row->id_kelas }}" type="button" class="btn btn-danger"><i class="las la-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach

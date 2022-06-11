@@ -12,23 +12,19 @@
                     @method('put')
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Nama Guru</label>
-                        <input type="text" class="form-control" value="{{ $agenda->namaguru }}"
-                            name="namaguru" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        @error('namaguru')
-                        <div class="text-danger">
-                            {{$message}}
-                        </div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Mapel</label>
-                        <input type="text" class="form-control" value="{{ $agenda->mapel }}" name="mapel"
-                            id="exampleInputPassword1">
-                        @error('mapel')
-                        <div class="text-danger">
-                            {{$message}}
-                        </div>
-                        @enderror
+                        <select class="form-select" name="user_id">
+                            <option selected>Wali Kelas</option>
+                            @foreach ($datauser as $data)
+                            @if ($data->level == 'guru')   
+                            @if ($data->id == $agenda->user_id)
+                            <option value="{{$data->id}}" selected>{{ $data->name }} ({{$data->mapel}})</option>
+                            @else
+                            <option value="{{$data->id}}">{{ $data->name }}</option>
+                                
+                            @endif
+                            @endif
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Materi Pembelajaran</label>
@@ -72,13 +68,17 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Nama Kelas</label>
-                        <input type="text" class="form-control" value="{{ $agenda->namakelas }}"
-                            name="namakelas" id="exampleInputPassword1">
-                        @error('namakelas')
-                        <div class="text-danger">
-                            {{$message}}
-                        </div>
-                        @enderror
+                        <select class="form-select" name="user_id">
+                            <option selected>Wali Kelas</option>
+                            @foreach ($datakelas as $data)
+                            @if ($data->id == $agenda->kelas_id)
+                            <option value="{{$data->id}}" selected>{{ $data->nama }}</option>
+                            @else
+                            <option value="{{$data->id}}">{{ $data->nama }}</option>
+                                
+                            @endif
+                            @endforeach
+                        </select>
                     </div>
                     <label for="exampleInputPassword1" class="form-label">Jenis Pembelajaran</label>
                     <select class="form-select form-select mb-3" aria-label=".form-select-lg example">

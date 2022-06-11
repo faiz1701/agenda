@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agenda;
+use App\Models\Guru;
+use App\Models\Kelas;
+use App\Models\Mapel;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -12,13 +16,18 @@ class AgendaController extends Controller
 {
     public function index()
     {
-        $agenda = Agenda::all();
+        $agenda = Agenda::select('agendas.*', 'kelas.*', 'agendas.id as id_agenda', 'users.*')
+            ->leftJoin('users', 'users.id', 'agendas.user_id')
+            ->leftJoin('kelas', 'kelas.id', 'agendas.kelas_id')->get();
+        // dd($agenda);
         return view('dataagenda', compact('agenda'));
     }
 
     public function create()
     {
-        return view('tambahagenda');
+        $datauser = User::all();
+        $datakelas = Kelas::all();
+        return view('tambahagenda', compact('datauser', 'datakelas'));
     }
 
     public function store(Request $request)
@@ -37,7 +46,10 @@ class AgendaController extends Controller
     public function tampilan($id)
     {
         $agenda = Agenda::find($id);
-        return view('editagenda', compact('agenda'));
+        $datakelas = Kelas::all();
+        $datauser = User::all();
+        // dd($agenda);
+        return view('editagenda', compact('agenda', 'datakelas', 'datauser'));
     }
 
     public function update(Request $request, $id)

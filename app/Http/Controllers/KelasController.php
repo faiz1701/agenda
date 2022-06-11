@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guru;
+use App\Models\User;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
 
@@ -9,13 +11,18 @@ class KelasController extends Controller
 {
     public function index()
     {
-        $kelas = Kelas::all();
-        return view('datakelas', compact('kelas'));
+        $kelas = Kelas::select('kelas.*', 'users.*', 'kelas.id as id_kelas')
+            ->leftJoin('users', 'kelas.user_id', 'users.id')
+            ->paginate(5);
+        return view('datakelas', [
+            'datakelas' => $kelas
+        ]);
     }
 
     public function create()
     {
-        return view('tambahkelas');
+        $datauser = User::all();
+        return view('tambahkelas', compact('datauser'));
     }
 
     public function store(Request $request)
@@ -27,7 +34,11 @@ class KelasController extends Controller
     public function tampilan($id)
     {
         $kelas = Kelas::find($id);
-        return view('editkelas', compact('kelas'));
+        $datauser = User::all();
+        return view('editkelas', [
+            'kelas' => $kelas,
+            'datauser' => $datauser
+        ]);
     }
 
     public function update(Request $request, $id)

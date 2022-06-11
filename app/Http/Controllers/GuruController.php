@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
+use App\Models\Mapel;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 
@@ -11,17 +13,28 @@ class GuruController extends Controller
 
     public function index()
     {
-        $data = Guru::all();
-        return view('dataguru', compact('data'));
+        $data = User::all();
+        return view('dataguru', [
+            'data' => $data
+        ]);
     }
 
     public function create()
     {
-        return view('tambahguru');
+        $datauser = User::all();
+        return view('tambahguru', [
+            'datauser' => $datauser
+        ]);
     }
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'user_id' => 'required',
+            'namaguru' => 'required',
+            'nikguru' => 'required',
+            'mapel_id' => 'required',
+        ]);
         Guru::create($request->all());
         // dd($request->all());
         return redirect('dataguru');
@@ -29,21 +42,29 @@ class GuruController extends Controller
 
     public function tampilan($id)
     {
-        $data = Guru::find($id);
-        return view('editguru', compact('data'));
+        $datauser = User::find($id);
+        // return $datauser;
+        return view('editguru', compact('datauser'));
     }
 
     public function update(Request $request, $id)
     {
-        $data = Guru::find($id);
-        $data->update($request->all());
+
         // dd($request->all());
+        $data = User::find($id);
+        $data->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'nik' => $request->nik,
+            'mapel' => $request->mapel,
+
+        ]);
         return redirect('dataguru');
     }
 
     public function delete($id)
     {
-        $data = Guru::find($id);
+        $data = User::find($id);
         $data->delete();
         return redirect('dataguru');
     }

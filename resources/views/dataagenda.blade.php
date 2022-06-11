@@ -38,13 +38,13 @@
                         @foreach ($agenda as $row)
                         <tr>
                             <th scope="row">{{ $no++ }}</th>
-                            <td>{{$row->namaguru}}</td>
+                            <td>{{$row->name}}</td>
                             <td>{{$row->mapel}}</td>
                             <td>{{$row->materipelajaran}}</td>
                             <td>{{$row->mulaipembelajaran}}</td>
                             <td>{{$row->akhirpembelajaran}}</td>
                             <td>{{$row->siswatidakhadir}}</td>
-                            <td>{{$row->namakelas}}</td>
+                            <td>{{$row->nama}}</td>
                             <td>{{$row->jenispembelajaran}}</td>
                             <td>{{$row->linkpembelajaran}}</td>
                             <td>
@@ -53,9 +53,9 @@
                             </td>
                             <td>{{$row->keterangan}}</td>
                             <td>
-                                <a href="/tampilanagenda/{{ $row->id }}"
+                                <a href="/tampilanagenda/{{ $row->id_agenda }}"
                                     class="btn btn-warning"><i class="las la-edit"></i></a>
-                                <a href="/deleteagenda/{{ $row->id }}" class="btn btn-danger"><i
+                                <a href="/deleteagenda/{{ $row->id_agenda }}" class="btn btn-danger"><i
                                         class="las la-trash"></i></a>
                             </td>
                         </tr>
