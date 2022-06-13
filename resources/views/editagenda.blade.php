@@ -81,10 +81,9 @@
                         </select>
                     </div>
                     <label for="exampleInputPassword1" class="form-label">Jenis Pembelajaran</label>
-                    <select class="form-select form-select mb-3" aria-label=".form-select-lg example">
-                        <option selected>{{ $agenda->jenispembelajaran }}</option>
-                        <option value="online">Online</option>
-                        <option value="offline">Offline</option>
+                    <select class="form-select form-select mb-3" aria-label=".form-select-lg example" name="jenispembelajaran">
+                        <option value="online" {{ ($agenda->jenispembelajaran == 'online') ? 'selected' : '' }}>Online</option>
+                        <option value="offline" {{($agenda->jenispembelajaran == 'offline') ? 'selected' : ''}}>Offline</option>
                         @error('jenispembelajaran')
                         <div class="text-danger">
                             {{$message}}

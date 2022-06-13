@@ -54,6 +54,7 @@ class AgendaController extends Controller
 
     public function update(Request $request, $id)
     {
+        // dd($request);
         $agenda = Agenda::find($id);
         $agenda->update();
         $agenda->update($request->all());
