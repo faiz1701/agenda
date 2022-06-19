@@ -53,10 +53,9 @@ class GuruController extends Controller
         // dd($request->all());
         $data = User::find($id);
         $data->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'nik' => $request->nik,
-            'mapel' => $request->mapel,
+            'tanggal_masuk' => $request->tanggal_masuk,
+            'nama_barang' => $request->nama_barang,
+            'stok_masuk' => $request->stok_masuk,
 
         ]);
         return redirect('dataguru');
